@@ -18,7 +18,12 @@ class StringCalculatorTest {
         int result = calculator.add("1,2");
         assertEquals(3,result) ;
     }
-
+    @Test
+    public void TestAddMultipleNumbersToCheckIfEqualsToSum() {
+        StringCalculator sc = new StringCalculator();
+        int result = sc.add("1,2,3,4");
+        assertEquals(10, result);
+    }
 
 
 
