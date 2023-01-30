@@ -60,7 +60,7 @@ public class StringCalculator {
             sum += parsedNumber;
         }
         if (!negativeNumbers.isEmpty()) {
-            throw new IllegalArgumentException("negative number is not allowed: ");
+            throw new IllegalArgumentException("negatives not allowed:");
         }
         return sum;
     }

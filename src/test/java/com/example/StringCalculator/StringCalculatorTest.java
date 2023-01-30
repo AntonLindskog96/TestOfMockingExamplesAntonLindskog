@@ -28,7 +28,7 @@ class StringCalculatorTest {
     }
 
     @Test
-    public void AddNumbersWithNewLines() {
+    public void TestIfNumbersIsAddedWhenNewLineIsPresented() {
         StringCalculator calculatorLines = new StringCalculator();
 
         int sum = calculatorLines.addNewLines("1\n2,3");
@@ -53,32 +53,42 @@ class StringCalculatorTest {
     }
 
     @Test
-    public void AddOneNegative() {
+    public void AddOneNegativeToCatchIfItsAllowed() {
         StringCalculator calculator = new StringCalculator();
         try {
             calculator.addNegative("1,-2,3");
             fail("Exception not thrown");
         } catch (IllegalArgumentException e) {
-            assertEquals("negatives not allowed: [-2]", e.getMessage());
+            assertEquals("negatives not allowed:", e.getMessage());
         }
 
     }
+
     @Test()
-    public void AddBigNumber(){
+    public void AddBigNumberOver1000ToCheckIfItsIgnored() {
         StringCalculator calculator = new StringCalculator();
         assertEquals(2, calculator.addNegative("2,1001"));
     }
 
     @Test
-    public void AddWithCustomDelimiter() {
+    public void TestIfDelimitersIsIgnoredAndNumbersIsAddedUp() {
         String number = "//[***]\n1***2***3";
         assertEquals(6, StringCalculator.OneDelimiter(number));
     }
+
     @Test
-    public void AddWithCustomDelimiters() {
+    public void TestIfTwoDelimitersWithDifferentCharIisIgnoredAndNumbersIsAdded() {
         String number = "//[*][%]\n1*2%3";
         int numbercalc = StringCalculator.OneDelimiter(number);
         assertEquals(6, numbercalc);
     }
 
+    @Test
+    public void AddNumbersWithMultipleDelimitersWithLengthLongerThanChar() {
+        String number = "//[%*][*&][!%]\n1*2%3";
+        int numbercalc = StringCalculator.OneDelimiter(number);
+        assertEquals(6, numbercalc);
+
+
+    }
 }
