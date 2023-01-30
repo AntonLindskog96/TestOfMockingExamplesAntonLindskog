@@ -50,6 +50,8 @@ public class StringCalculator {
             int parsedNumber = Integer.parseInt(number);
             if (parsedNumber < 0) {
                 negativeNumbers.add(parsedNumber);
+            } else if (parsedNumber > 1000) {
+                continue;
             }
             sum += parsedNumber;
         }

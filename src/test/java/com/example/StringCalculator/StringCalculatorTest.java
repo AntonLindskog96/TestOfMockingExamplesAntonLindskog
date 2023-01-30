@@ -63,4 +63,9 @@ class StringCalculatorTest {
         }
 
     }
+    @Test()
+    public void AddBigNumber(){
+        StringCalculator calculator = new StringCalculator();
+        assertEquals(2, calculator.addNegative("2,1001"));
+    }
 }
