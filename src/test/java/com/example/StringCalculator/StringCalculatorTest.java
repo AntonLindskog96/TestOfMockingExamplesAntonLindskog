@@ -68,4 +68,12 @@ class StringCalculatorTest {
         StringCalculator calculator = new StringCalculator();
         assertEquals(2, calculator.addNegative("2,1001"));
     }
+
+    @Test
+    public void AddWithCustomDelimiter() {
+        String number = "//[***]\n1***2***3";
+        assertEquals(6, StringCalculator.addDelimiter(number));
+    }
+
+
 }

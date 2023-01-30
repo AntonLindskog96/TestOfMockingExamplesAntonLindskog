@@ -16,17 +16,18 @@ public class StringCalculator {
         return sum;
     }
 
-        public int addNewLines(String numbers) {
-            if (numbers == null || numbers.isEmpty()) {
-                return 0;
-            }
-            String[] parts = numbers.split("[,\n]");
-            int sum = 0;
-            for (String part : parts) {
-                sum += Integer.parseInt(part);
-            }
-            return sum;
+    public int addNewLines(String numbers) {
+        if (numbers == null || numbers.isEmpty()) {
+            return 0;
         }
+        String[] parts = numbers.split("[,\n]");
+        int sum = 0;
+        for (String part : parts) {
+            sum += Integer.parseInt(part);
+        }
+        return sum;
+    }
+
     public int addDelimiters(String numbers) {
         if (numbers.startsWith("//")) {
             int newLineIndex = numbers.indexOf("\n");
@@ -41,6 +42,7 @@ public class StringCalculator {
         }
         return sum;
     }
+
     public int addNegative(String numbers) {
         List<Integer> negativeNumbers = new ArrayList<>();
         String[] numbArray = numbers.split(",");
@@ -61,5 +63,25 @@ public class StringCalculator {
         return sum;
     }
 
+    public static int addDelimiter(String numbers) {
+        if (numbers.isEmpty()) {
+            return 0;
+        }
+        String delimiter = ",|\n";
 
+        if (numbers.startsWith("//")) {
+            int delimiterIndex = numbers.indexOf("\n");
+            delimiter = numbers.substring(2, delimiterIndex);
+            numbers = numbers.substring(delimiterIndex + 1);
+        }
+        String[] numberArray = numbers.split(delimiter);
+        int sum = 0;
+
+        for (String number : numberArray) {
+            if (number.isEmpty())
+                continue;
+            sum += Integer.parseInt(number);
+        }
+        return sum;
     }
+}
