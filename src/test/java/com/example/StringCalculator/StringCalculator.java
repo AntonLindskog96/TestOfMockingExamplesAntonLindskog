@@ -77,8 +77,14 @@ public class StringCalculator {
                 delimiter = numbers.substring(2, delimiterIndex);
                 numbers = numbers.substring(delimiterIndex + 1);
             }
-
+            if (delimiter.length() > 1){
+                delimiter = delimiter.replace("[", "").replace("]", "");
+                delimiter = "[" + delimiter + "]";
                 numberArray = numbers.split(delimiter);
+
+            }   else {
+                numberArray = numbers.split(delimiter);
+            }
 
 
             int sum = 0;

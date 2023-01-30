@@ -74,5 +74,11 @@ class StringCalculatorTest {
         String number = "//[***]\n1***2***3";
         assertEquals(6, StringCalculator.OneDelimiter(number));
     }
+    @Test
+    public void AddWithCustomDelimiters() {
+        String number = "//[*][%]\n1*2%3";
+        int numbercalc = StringCalculator.OneDelimiter(number);
+        assertEquals(6, numbercalc);
+    }
 
 }
