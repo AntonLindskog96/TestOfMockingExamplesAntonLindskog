@@ -1,5 +1,8 @@
 package com.example.StringCalculator;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class StringCalculator {
     public int add(String numbers) {
         if (numbers == null || numbers.isEmpty()) {
@@ -35,6 +38,23 @@ public class StringCalculator {
         int sum = 0;
         for (String number : numberArray) {
             sum += Integer.parseInt(number);
+        }
+        return sum;
+    }
+    public int addNegative(String numbers) {
+        List<Integer> negativeNumbers = new ArrayList<>();
+        String[] numbArray = numbers.split(",");
+        int sum = 0;
+
+        for (String number : numbArray) {
+            int parsedNumber = Integer.parseInt(number);
+            if (parsedNumber < 0) {
+                negativeNumbers.add(parsedNumber);
+            }
+            sum += parsedNumber;
+        }
+        if (!negativeNumbers.isEmpty()) {
+            throw new IllegalArgumentException("negatives not allowed: " + negativeNumbers.toString());
         }
         return sum;
     }

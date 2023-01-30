@@ -42,15 +42,25 @@ class StringCalculatorTest {
 
 
     }
-        @Test
-        public void CustomDelimiterTestIfEqualsTheSum() {
-            StringCalculator calculator = new StringCalculator();
-            String input = "//;\n1;2";
-            int expected = 3;
-            int result = calculator.addDelimiters(input);
-            assertEquals(expected, result);
+
+    @Test
+    public void CustomDelimiterTestIfEqualsTheSum() {
+        StringCalculator calculator = new StringCalculator();
+        String input = "//;\n1;2";
+        int expected = 3;
+        int result = calculator.addDelimiters(input);
+        assertEquals(expected, result);
+    }
+
+    @Test
+    public void AddOneNegative() {
+        StringCalculator calculator = new StringCalculator();
+        try {
+            calculator.addNegative("1,-2,3");
+            fail("Exception not thrown");
+        } catch (IllegalArgumentException e) {
+            assertEquals("negatives not allowed: [-2]", e.getMessage());
         }
 
-
-
     }
+}
