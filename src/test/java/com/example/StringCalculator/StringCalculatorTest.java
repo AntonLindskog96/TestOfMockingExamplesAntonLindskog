@@ -42,4 +42,15 @@ class StringCalculatorTest {
 
 
     }
-}
+        @Test
+        public void CustomDelimiterTestIfEqualsTheSum() {
+            StringCalculator calculator = new StringCalculator();
+            String input = "//;\n1;2";
+            int expected = 3;
+            int result = calculator.addDelimiters(input);
+            assertEquals(expected, result);
+        }
+
+
+
+    }

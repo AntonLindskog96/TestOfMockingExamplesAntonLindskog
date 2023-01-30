@@ -24,5 +24,20 @@ public class StringCalculator {
             }
             return sum;
         }
+    public int addDelimiters(String numbers) {
+        if (numbers.startsWith("//")) {
+            int newLineIndex = numbers.indexOf("\n");
+            String delimiter = numbers.substring(2, newLineIndex);
+            numbers = numbers.substring(newLineIndex + 1);
+            numbers = numbers.replace(delimiter, ",");
+        }
+        String[] numberArray = numbers.split(",");
+        int sum = 0;
+        for (String number : numberArray) {
+            sum += Integer.parseInt(number);
+        }
+        return sum;
+    }
+
 
     }
