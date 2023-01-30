@@ -13,5 +13,16 @@ public class StringCalculator {
         return sum;
     }
 
+        public int addNewLines(String numbers) {
+            if (numbers == null || numbers.isEmpty()) {
+                return 0;
+            }
+            String[] parts = numbers.split("[,\n]");
+            int sum = 0;
+            for (String part : parts) {
+                sum += Integer.parseInt(part);
+            }
+            return sum;
+        }
 
-}
+    }
