@@ -72,8 +72,7 @@ class StringCalculatorTest {
     @Test
     public void AddWithCustomDelimiter() {
         String number = "//[***]\n1***2***3";
-        assertEquals(6, StringCalculator.addDelimiter(number));
+        assertEquals(6, StringCalculator.OneDelimiter(number));
     }
-
 
 }

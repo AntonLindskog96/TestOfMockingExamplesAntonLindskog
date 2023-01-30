@@ -1,7 +1,9 @@
 package com.example.StringCalculator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class StringCalculator {
     public int add(String numbers) {
@@ -58,30 +60,35 @@ public class StringCalculator {
             sum += parsedNumber;
         }
         if (!negativeNumbers.isEmpty()) {
-            throw new IllegalArgumentException("negatives not allowed: " + negativeNumbers.toString());
+            throw new IllegalArgumentException("negative number is not allowed: ");
         }
         return sum;
     }
 
-    public static int addDelimiter(String numbers) {
-        if (numbers.isEmpty()) {
-            return 0;
-        }
-        String delimiter = ",|\n";
+    public static int OneDelimiter(String numbers) {
+            if (numbers.isEmpty()) {
+                return 0;
+            }
+            String delimiter = ",|\n";
+            String[] numberArray;
 
-        if (numbers.startsWith("//")) {
-            int delimiterIndex = numbers.indexOf("\n");
-            delimiter = numbers.substring(2, delimiterIndex);
-            numbers = numbers.substring(delimiterIndex + 1);
-        }
-        String[] numberArray = numbers.split(delimiter);
-        int sum = 0;
+            if (numbers.startsWith("//")) {
+                int delimiterIndex = numbers.indexOf("\n");
+                delimiter = numbers.substring(2, delimiterIndex);
+                numbers = numbers.substring(delimiterIndex + 1);
+            }
 
-        for (String number : numberArray) {
-            if (number.isEmpty())
-                continue;
-            sum += Integer.parseInt(number);
+                numberArray = numbers.split(delimiter);
+
+
+            int sum = 0;
+
+            for (String number : numberArray) {
+                if (number.isEmpty())
+                    continue;
+                sum += Integer.parseInt(number);
+            }
+            return sum;
         }
-        return sum;
+
     }
-}
